@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <title>Wavefront Local Optimization – Hero</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Wavefront Local Optimization builds and maintains Google Business Profiles that drive more calls, visits, and leads — without agency bloat." />
+  <meta name="description" content="Wavefront Local Optimization sets up and maintains Google Business Profiles so the right customers find you first — with a simple $99 setup and $49/month management for local businesses in any industry." />
 
   <!-- Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,16 +13,18 @@
 
   <style>
     :root {
-      --bg-top: #e5f0ff;
-      --bg-bottom: #f9fafb;
+      /* Bright, optimistic ocean palette */
+      --bg-top: #e5f2ff;
+      --bg-bottom: #f9fbff;
       --primary: #2563eb;
       --primary-soft: #3b82f6;
       --accent: #0ea5e9;
+      --accent-soft: #7dd3fc;
       --text-main: #0f172a;
       --text-muted: #64748b;
       --card-bg: #ffffff;
       --card-border: #e2e8f0;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
+      --shadow-soft: 0 22px 60px rgba(15, 23, 42, 0.16);
     }
 
     * {
@@ -38,7 +40,9 @@
 
     body {
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: linear-gradient(135deg, var(--bg-top), var(--bg-bottom));
+      background:
+        radial-gradient(1200px 700px at 10% 0%, #f0f9ff, transparent 55%),
+        linear-gradient(135deg, var(--bg-top), var(--bg-bottom));
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -52,24 +56,31 @@
       position: relative;
       width: 100%;
       max-width: 1180px;
-      min-height: 70vh;
-      background: transparent;
+      min-height: 80vh;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 32px 90px rgba(15, 23, 42, 0.18);
+      background: linear-gradient(135deg, #f9fbff, #eef2ff);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
+
+    /* MAIN CARD */
 
     .hero-inner {
       position: relative;
-      z-index: 2;
-      background: linear-gradient(145deg, rgba(255,255,255,0.96), rgba(255,255,255,0.94));
-      border-radius: 20px;
-      border: 1px solid rgba(226, 232, 240, 0.9);
-      box-shadow: var(--shadow-soft);
-      padding: 32px 32px 40px;
+      z-index: 5;
+      margin: 28px 32px;
+      padding: 26px 30px 26px;
       display: flex;
       gap: 32px;
       align-items: center;
       justify-content: space-between;
-      opacity: 0;
-      transition: opacity 420ms cubic-bezier(.2,.9,.3,1);
+      border-radius: 18px;
+      background: radial-gradient(circle at 0% 0%, rgba(236, 252, 255, 0.85), rgba(255,255,255,0.98));
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: var(--shadow-soft);
     }
 
     .hero-left {
@@ -83,12 +94,12 @@
       gap: 8px;
       padding: 6px 12px;
       border-radius: 999px;
-      background: rgba(239, 246, 255, 0.95);
+      background: rgba(219, 234, 254, 0.9);
       border: 1px solid #dbeafe;
       color: #1d4ed8;
       font-weight: 600;
-      font-size: 12px;
-      letter-spacing: 0.05em;
+      font-size: 11px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
@@ -97,19 +108,20 @@
       height: 8px;
       border-radius: 999px;
       background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.22);
     }
 
     .hero-title {
       margin-top: 18px;
-      font-size: clamp(32px, 4.8vw, 46px);
-      line-height: 1.08;
+      font-size: clamp(34px, 4.6vw, 50px);
+      line-height: 1.03;
       font-weight: 700;
       letter-spacing: -0.025em;
       color: var(--text-main);
     }
 
     .hero-highlight {
-      color: var(--primary);
+      color: var(--primary-soft);
     }
 
     .hero-subtitle {
@@ -141,17 +153,18 @@
       cursor: pointer;
       border: 1px solid transparent;
       transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+      white-space: nowrap;
     }
 
     .btn-primary {
-      background: linear-gradient(120deg, #2563eb, #3b82f6);
+      background: linear-gradient(120deg, var(--primary), var(--primary-soft));
       color: #ffffff;
-      box-shadow: 0 14px 32px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.45);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 18px 42px rgba(37, 99, 235, 0.45);
+      box-shadow: 0 20px 56px rgba(37, 99, 235, 0.55);
     }
 
     .btn-secondary {
@@ -162,7 +175,7 @@
 
     .btn-secondary:hover {
       background: #f9fafb;
-      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.10);
     }
 
     .hero-meta {
@@ -197,15 +210,9 @@
       background: var(--card-bg);
       border-radius: 16px;
       border: 1px solid var(--card-border);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
       padding: 16px 18px 18px;
       color: var(--text-main);
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .panel:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 22px 50px rgba(15, 23, 42, 0.2);
     }
 
     .panel-header {
@@ -272,31 +279,35 @@
       color: #6b7280;
     }
 
-    /* Wave container with animated SVG waves */
-    .wave-container {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -10px;
-      height: 180px;
-      z-index: 1;
-      pointer-events: none;
+    /* WAVE BAND */
+
+    .wave-strip {
+      position: relative;
+      width: 100%;
+      height: 190px;
+      margin-top: auto;
     }
 
-    .wave-svg {
+    #waveCanvas {
       width: 100%;
       height: 100%;
       display: block;
     }
 
+    /* Responsive tweaks */
     @media (max-width: 900px) {
       body {
         padding: 24px 12px;
       }
 
+      .hero-root {
+        min-height: 90vh;
+      }
+
       .hero-inner {
         flex-direction: column;
-        padding: 24px 20px 34px;
+        padding: 22px 18px 24px;
+        margin: 18px 18px 10px;
       }
 
       .hero-left,
@@ -310,19 +321,18 @@
       }
 
       .panel {
-        margin-top: 4px;
+        margin-top: 6px;
         width: 100%;
       }
 
-      .wave-container {
-        bottom: -20px;
-        height: 150px;
+      .wave-strip {
+        height: 170px;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .btn-primary,
-      .panel {
+      .btn {
+        animation: none !important;
         transition: none !important;
       }
     }
@@ -331,7 +341,8 @@
 
 <body>
   <div class="hero-root" role="main" aria-labelledby="hero-title">
-    <div class="hero-inner" id="hero-inner">
+    <!-- Main content card -->
+    <div class="hero-inner">
       <section class="hero-left">
         <div class="badge" aria-hidden="true">
           <span class="badge-dot"></span>
@@ -339,15 +350,14 @@
         </div>
 
         <h1 id="hero-title" class="hero-title">
-          Local visibility that <span class="hero-highlight">actually pays off.</span>
+          Turn Google into a <span class="hero-highlight">wave of new customers.</span>
         </h1>
 
         <p class="hero-subtitle">
-          Wavefront Local Optimization sets up and maintains your Google Business Profile so the right customers find you first — with a simple $99 setup and $49/month management.
+          Wavefront Local Optimization sets up and maintains your Google Business Profile so the right customers find you first — with one simple $99 setup and $49/month management, built for local businesses in any industry.
         </p>
 
         <div class="hero-actions" role="group" aria-label="Primary actions">
-          <!-- Link these later to your audit / intake -->
           <a href="#" class="btn btn-primary">Get my free Google audit</a>
           <a href="#" class="btn btn-secondary">See exactly what you do</a>
         </div>
@@ -397,141 +407,129 @@
           </div>
 
           <div class="panel-footer">
-            Sample data from a local service business after a full Wavefront setup and 60 days of management.
+            Sample data from a local business after a full Wavefront setup and 60 days of optimization.
           </div>
         </div>
       </aside>
     </div>
 
-    <!-- Bright surfing-style animated waves -->
-    <div class="wave-container" aria-hidden="true">
-      <svg class="wave-svg" viewBox="0 0 1400 300" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="wback" x1="0" x2="1">
-            <stop offset="0" stop-color="#bfdbfe" stop-opacity="1"/>
-            <stop offset="1" stop-color="#dbeafe" stop-opacity="1"/>
-          </linearGradient>
-          <linearGradient id="wmid" x1="0" x2="1">
-            <stop offset="0" stop-color="#93c5fd" stop-opacity="1"/>
-            <stop offset="1" stop-color="#60a5fa" stop-opacity="1"/>
-          </linearGradient>
-          <linearGradient id="wfront" x1="0" x2="1">
-            <stop offset="0" stop-color="#38bdf8" stop-opacity="1"/>
-            <stop offset="1" stop-color="#2563eb" stop-opacity="1"/>
-          </linearGradient>
-        </defs>
-
-        <path id="wave-back" fill="url(#wback)" opacity="0.9"
-              d="M0,220 C200,210 400,230 700,220 C1000,210 1200,230 1400,220 L1400,300 L0,300 Z"></path>
-
-        <path id="wave-mid" fill="url(#wmid)" opacity="0.95"
-              d="M0,230 C180,215 420,240 700,230 C980,220 1180,240 1400,230 L1400,300 L0,300 Z"></path>
-
-        <path id="wave-front" fill="url(#wfront)" opacity="1"
-              d="M0,240 C150,215 420,250 700,240 C980,230 1250,250 1400,240 L1400,300 L0,300 Z"></path>
-      </svg>
+    <!-- Hyper-real wave silhouette band -->
+    <div class="wave-strip" aria-hidden="true">
+      <canvas id="waveCanvas"></canvas>
     </div>
   </div>
 
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Wave shader + animation -->
   <script>
-  // Animated bright waves only. No parallax, no jittery hero.
-  (function(){
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    (function(){
+      const canvas = document.getElementById("waveCanvas");
+      if (!canvas || !window.THREE) return;
 
-    function $(id){ return document.getElementById(id); }
+      const prefersReduced = window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    function WaveAnimator(paths){
-      this.paths = (paths || []).filter(p => p && p.el);
-      this.t = 0;
-      this.running = false;
-      this.raf = null;
-      this.animate = this.animate.bind(this);
-    }
-    WaveAnimator.prototype.start = function(){
-      if (prefersReduced) return;
-      if (!this.running){
-        this.running = true;
-        this.raf = requestAnimationFrame(this.animate);
-      }
-    };
-    WaveAnimator.prototype.stop = function(){
-      this.running = false;
-      if (this.raf){ cancelAnimationFrame(this.raf); this.raf = null; }
-    };
-    WaveAnimator.prototype.animate = function(){
-      if (!this.running) return;
-      this.t += 0.016;
-      const w = 1400, h = 300;
-      const segments = 8;
+      const renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        alpha: true,
+        antialias: true
+      });
 
-      for (let p of this.paths){
-        if (!p.el) continue;
-        const pts = [];
-        for (let i=0;i<=segments;i++){
-          const x = (i/segments) * w;
-          const base = p.base + (p.amplitude * Math.sin((this.t * p.speed) + (i * 0.9) + (p.phase || 0)));
-          const extra = (p.amplitude * 0.22) * Math.sin((this.t * p.speed * 1.7) + (i * 1.5) + (p.phase || 0));
-          pts.push([x, base + extra]);
+      const scene = new THREE.Scene();
+      const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+      const geometry = new THREE.PlaneGeometry(2, 2);
+
+      const uniforms = {
+        time: { value: 0 },
+        resolution: { value: new THREE.Vector2(1, 1) },
+        color: { value: new THREE.Color("#7fdcff") } // light bright aqua (choice A)
+      };
+
+      const fragmentShader = `
+        precision highp float;
+        uniform float time;
+        uniform vec2 resolution;
+        uniform vec3 color;
+
+        float hash(vec2 p){
+          return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
         }
-        let d = `M0,${h} L0,${pts[0][1]} `;
-        for (let i=0;i<pts.length-1;i++){
-          const [x1,y1] = pts[i];
-          const [x2,y2] = pts[i+1];
-          const cx = (x1 + x2)/2;
-          d += `Q ${x1},${y1} ${cx},${(y1+y2)/2} `;
+
+        float noise(vec2 p){
+          vec2 i = floor(p);
+          vec2 f = fract(p);
+          float a = hash(i);
+          float b = hash(i + vec2(1.0, 0.0));
+          float c = hash(i + vec2(0.0, 1.0));
+          float d = hash(i + vec2(1.0, 1.0));
+          vec2 u = f*f*(3.0-2.0*f);
+          return mix(a, b, u.x) +
+                 (c - a)*u.y*(1.0 - u.x) +
+                 (d - b)*u.x*u.y;
         }
-        const last = pts[pts.length-1];
-        d += `T ${w},${last[1]} L ${w},${h} Z`;
-        p.el.setAttribute('d', d);
+
+        void main(){
+          vec2 uv = gl_FragCoord.xy / resolution.xy;
+
+          // Base wave line (0 at bottom, 1 at top)
+          float wave = sin(uv.x * 8.0 + time * 1.1) * 0.10;
+          wave += sin(uv.x * 16.0 + time * 1.8) * 0.04;
+
+          // Add noisy splash detail near crest
+          float crestNoise = noise(vec2(uv.x * 12.0, time * 0.7)) * 0.07;
+          float height = 0.40 + wave + crestNoise;
+
+          // Below the line = water, above = transparent
+          if (uv.y > height) {
+            discard;
+          }
+
+          // Slight fade near top edge for softer silhouette
+          float edge = smoothstep(height - 0.03, height + 0.01, uv.y);
+          float alpha = 1.0 - edge * 0.25;
+
+          gl_FragColor = vec4(color, alpha);
+        }
+      `;
+
+      const material = new THREE.ShaderMaterial({
+        uniforms: uniforms,
+        fragmentShader: fragmentShader,
+        transparent: true
+      });
+
+      const quad = new THREE.Mesh(geometry, material);
+      scene.add(quad);
+
+      function resize() {
+        const width = canvas.clientWidth;
+        const height = canvas.clientHeight;
+        if (!width || !height) return;
+
+        const dpr = window.devicePixelRatio || 1;
+        renderer.setSize(width, height, false);
+        uniforms.resolution.value.set(width * dpr, height * dpr);
       }
-      this.raf = requestAnimationFrame(this.animate);
-    };
 
-    const waveBack = document.getElementById('wave-back');
-    const waveMid = document.getElementById('wave-mid');
-    const waveFront = document.getElementById('wave-front');
+      window.addEventListener("resize", resize);
+      resize();
 
-    const animator = new WaveAnimator([
-      { el: waveBack, speed: 0.22, amplitude: 10, base: 220, phase: 0.2 },
-      { el: waveMid,  speed: 0.36, amplitude: 14, base: 230, phase: 1.1 },
-      { el: waveFront,speed: 0.52, amplitude: 18, base: 240, phase: 2.0 }
-    ]);
+      function render(now) {
+        if (!prefersReduced) {
+          uniforms.time.value = now * 0.001;
+          requestAnimationFrame(render);
+        }
+        renderer.render(scene, camera);
+      }
 
-    // Start after initial paint
-    function safeStart(){
-      if (document.readyState === 'complete' || document.readyState === 'interactive'){
-        setTimeout(()=>{ if (!document.hidden) animator.start(); }, 120);
+      if (prefersReduced) {
+        render(0);
       } else {
-        window.addEventListener('DOMContentLoaded', ()=> {
-          setTimeout(()=>{ if (!document.hidden) animator.start(); }, 120);
-        });
+        requestAnimationFrame(render);
       }
-    }
-    safeStart();
-
-    // Reduced motion: keep waves static
-    if (prefersReduced){
-      animator.stop();
-    }
-
-    // Pause animation when page hidden
-    document.addEventListener('visibilitychange', function(){
-      if (document.hidden) animator.stop();
-      else animator.start();
-    });
-
-    // Fade hero in once
-    const heroInner = document.getElementById('hero-inner');
-    if (heroInner){
-      if (document.readyState === 'complete' || document.readyState === 'interactive'){
-        requestAnimationFrame(()=> heroInner.style.opacity = 1);
-      } else {
-        window.addEventListener('DOMContentLoaded', () => {
-          requestAnimationFrame(()=> heroInner.style.opacity = 1);
-        });
-      }
-    }
-  })();
+    })();
   </script>
 </body>
 </html>
